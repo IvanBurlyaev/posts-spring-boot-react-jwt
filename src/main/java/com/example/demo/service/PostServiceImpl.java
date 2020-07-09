@@ -29,22 +29,19 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostDto> getAllPosts() {
-        List<PostDto> postDtos = convertPostsToDto((List<Post>) postRepository.findAll());
-        return postDtos;
+        return convertPostsToDto((List<Post>) postRepository.findAll());
     }
 
     @Override
     public List<PostDto> getAuthorPosts(Long authorId) {
-        List<PostDto> postDtos = convertPostsToDto(postRepository.findPostsByUserId(authorId));
-        return postDtos;
+        return convertPostsToDto(postRepository.findPostsByUserId(authorId));
     }
 
     @Override
     public PostDto getPostById(Long id) {
         Optional<Post> post = postRepository.findById(id);
         checkIfEntityIsPresent(post);
-        PostDto postDto = new PostDto(post.get());
-        return postDto;
+        return new PostDto(post.get());
     }
 
     @Transactional

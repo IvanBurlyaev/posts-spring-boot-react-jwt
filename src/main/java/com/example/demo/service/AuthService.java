@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface AuthService {
 
-    ResponseEntity<?> authenticate(JwtRequest jwtRequest, HttpServletRequest httpServletRequest,
+    ResponseEntity authenticate(JwtRequest jwtRequest, HttpServletRequest httpServletRequest,
                                    HttpServletResponse httpServletResponse);
 
-    ResponseEntity<?> logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
+    ResponseEntity logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
 }

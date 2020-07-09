@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.JwtRequest;
 import com.example.demo.JwtTokenUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class AuthServiceImpl implements AuthService {
+
+    private Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
 
     private AuthenticationManager authenticationManager;
     private JwtTokenUtil jwtTokenUtil;
@@ -72,7 +76,7 @@ public class AuthServiceImpl implements AuthService {
             try {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);
             } catch (Exception ex) {
-                ex.printStackTrace();
+                logger.error(ex.getMessage());
                 throw ex;
             }
         }
