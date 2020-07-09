@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.exception.EntityNotFoundException;
 import com.example.demo.exception.EntityNotFoundExceptionResponse;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -32,5 +33,10 @@ public class RestResponseEntityExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<?> handleExpiredJwtException(ExpiredJwtException expiredJwtException) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(expiredJwtException.getMessage());
     }
 }

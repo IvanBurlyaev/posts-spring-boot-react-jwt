@@ -1,9 +1,8 @@
 package com.example.demo;
 
 import com.example.demo.entity.User;
+import org.springframework.core.io.ClassPathResource;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -14,9 +13,12 @@ public class UserUtils {
     public static List<User> fetchUsersAndPostsFromJsonPlaceholder() throws IOException, ClassNotFoundException {
         List<User> populatedUsers = new ArrayList<>();
 
-        try (FileInputStream fileInputStream = new FileInputStream(new File("src/main/resources/users.txt"));
-             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
+        ClassPathResource classPathResource = new ClassPathResource("users.txt");
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(classPathResource.getInputStream());
+        ) {
             populatedUsers = (List<User>) objectInputStream.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return populatedUsers;
     }
