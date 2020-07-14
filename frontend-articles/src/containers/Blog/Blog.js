@@ -8,7 +8,6 @@ import Login from "./Login/Login";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/authActions';
 import Logout from "./Logout/Logout";
-import Spinner from "../../components/Spinner/Spinner";
 
 class Blog extends Component {
 
