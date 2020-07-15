@@ -58,6 +58,17 @@ public class PostServiceImpl implements PostService {
 
     @Transactional
     @Override
+    public PostDto updatePost(PostDto postDto) {
+        Optional<Post> post = postRepository.findById(postDto.getId());
+        checkIfEntityIsPresent(post);
+        Post postToModify = post.get();
+        postToModify.setTitle(postDto.getTitle());
+        postToModify.setBody(postDto.getBody());
+        return new PostDto(postToModify);
+    }
+
+    @Transactional
+    @Override
     public PostDto deletePost(Long id) {
         Optional<Post> post = postRepository.findById(id);
         checkIfEntityIsPresent(post);

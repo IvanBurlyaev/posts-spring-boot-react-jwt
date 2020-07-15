@@ -44,4 +44,9 @@ public class PostController {
         return postService.deletePost(id);
     }
 
+    @PutMapping
+    public PostDto updatePost(@RequestBody PostDto postDto) {
+        return postService.updatePost(postDto);
+    }
+
 }

@@ -8,6 +8,7 @@ import Login from "./Login/Login";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/authActions';
 import Logout from "./Logout/Logout";
+import ModifyPost from "./ModifyPost/ModifyPost";
 
 class Blog extends Component {
 
@@ -34,6 +35,7 @@ class Blog extends Component {
                     <Route path="/new-post" exact component={NewPost}/>
                     <Route path="/post/:id" exact component={FullPost}/>
                     <Route path="/logout" exact component={Logout}/>
+                    <Route path="/modify-post/:id" exact component={ModifyPost}/>
                     <Route component={Posts}/>
                 </Switch>
             );

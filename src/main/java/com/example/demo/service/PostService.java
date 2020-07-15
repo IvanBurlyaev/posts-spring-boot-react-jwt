@@ -12,6 +12,8 @@ public interface PostService {
 
     PostDto addPost(PostDto postDto);
 
+    PostDto updatePost(PostDto postDto);
+
     PostDto deletePost(Long id);
 
     List<PostDto> getAuthorPosts(Long authorId);

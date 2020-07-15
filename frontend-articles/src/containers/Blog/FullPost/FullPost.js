@@ -12,6 +12,10 @@ class FullPost extends Component {
         this.props.history.replace('/posts');
     };
 
+    modifyPostHandler = () => {
+        this.props.history.push('/modify-post/' + this.props.loadedPost.id);
+    };
+
     componentDidMount() {
         if (this.props.match.params.id) {
             this.props.onFetchPostById(this.props.match.params.id);
@@ -32,6 +36,7 @@ class FullPost extends Component {
                     <p>{this.props.loadedPost.body}</p>
                     <div className="Edit">
                         <button className="Delete" onClick={this.deletePostHandler}>Delete</button>
+                        <button className="Delete" onClick={this.modifyPostHandler}>Modify</button>
                     </div>
                 </div>
 
